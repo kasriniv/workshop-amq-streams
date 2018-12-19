@@ -6,20 +6,39 @@ We will use the first cluster previously created in this workshop as the "source
 We will create the mirror-maker "target" cluster.
  
 Prerequisites:
-1. Please make sure you have my-cluster installed per previous labs
-2. Make sure you are logged in to Openshift with the oc client
+1. You have 'my-cluster-kafka' installed per previous labs
+2. You have 'my-topic' created per previous labs
+3. Make sure you are logged in to Openshift with the oc client
 
+
+Steps
 Step 1: Run this to create the "target" cluster. This will be the cluster that mirror maker writes to.
 
 oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-ephemeral-mtarget.yaml
 
+Make sure the pods have come up fine.
+
 Step 2: create the mirror maker configuration
 
-Note that we will create the basic objects by running this yaml and then edit the environment properties in the Openshift webconsole.
+oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-mirror-maker-lab.yaml
+
+Make sure the pods have come up fine.
 
 
+Testing
+Step 1: 
+Go to the Openshift webconsole->Applications->Pods and pick the my-cluster-mtarget-kafka-0
+Go to the terminal and run
+./bin/kafka-topics.sh --list --zookeeper localhost:2181
+this will confirm that my-topic was created automatically
+Send some messages to my-topic on my-kafka-cluster
+./bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic
+
+See these messages being replicated to my-topic on my-cluster-mtarget-kafka
+./bin/kafka-console-producer.sh --broker-list my-cluster-mtarget-kafka-bootstrap:9092 --topic my-topic
+
+Note that the topic was autocreated for you.
 
 
-Open questions
-1. Can I put multiple topics to sync? how? comma seperated? K to test
-2. Do I have to precreate topics on target
+Challenge exercise
+Now try to whitelist another topic in the mirrormaker configuration

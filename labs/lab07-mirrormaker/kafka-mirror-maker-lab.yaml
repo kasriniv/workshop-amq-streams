@@ -6,8 +6,8 @@ spec:
   image: strimzi/kafka-mirror-maker:latest
   replicas: 1
   consumer:
-    bootstrapServers: my-cluster-kafka-bootstrap:9092
+    bootstrapServers: my-cluster-mtarget-kafka-bootstrap:9092
     groupId: my-source-group-id
   producer:
-    bootstrapServers: my-cluster-mtarget-kafka-bootstrap:9092
+    bootstrapServers: my-cluster-kafka-bootstrap:9092
   whitelist: "my-topic"
