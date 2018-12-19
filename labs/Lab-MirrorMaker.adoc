@@ -1,0 +1,2 @@
+#This lab walks through a) setting up mirrormaker b) testing the setup to ensure that messages sent to one cluster are being replicated/mirrored in the mirrormaker target cluster.
+
