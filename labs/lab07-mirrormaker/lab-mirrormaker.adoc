@@ -1,9 +1,8 @@
-This lab walks through 
-a) setting up mirrormaker 
-b) testing the setup to ensure that messages sent to one cluster are being replicated/mirrored in the mirrormaker target cluster.
+This lab walks through setting up mirrormaker and testing the setup to ensure that messages sent to one cluster are being replicated/mirrored in the mirrormaker target cluster.
 
 We will use the first cluster previously created in this workshop as the "source" cluster.
 We will create the mirror-maker "target" cluster.
+ 
  
 Prerequisites:
 1. You have 'my-cluster-kafka' installed per previous labs
@@ -12,33 +11,37 @@ Prerequisites:
 
 
 Steps
-Step 1: Run this to create the "target" cluster. This will be the cluster that mirror maker writes to.
-
-oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-ephemeral-mtarget.yaml
-
-Make sure the pods have come up fine.
-
-Step 2: create the mirror maker configuration
-
-oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-mirror-maker-lab.yaml
-
-Make sure the pods have come up fine.
 
 
-Testing
-Step 1: 
-Go to the Openshift webconsole->Applications->Pods and pick the my-cluster-mtarget-kafka-0
-Go to the terminal and run
-./bin/kafka-topics.sh --list --zookeeper localhost:2181
-this will confirm that my-topic was created automatically
-Send some messages to my-topic on my-kafka-cluster
-./bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic
+    Step 1: Run this to create the "target" cluster. This will be the cluster that mirror maker writes to.
 
-See these messages being replicated to my-topic on my-cluster-mtarget-kafka
-./bin/kafka-console-producer.sh --broker-list my-cluster-mtarget-kafka-bootstrap:9092 --topic my-topic
+    oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-ephemeral-mtarget.yaml
 
-Note that the topic was autocreated for you.
+    Make sure the pods have come up fine.
+
+    Step 2: create the mirror maker configuration
+
+    oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-mirror-maker-lab.yaml
+
+    Make sure the pods have come up fine.
+
+
+Testing 
+   Go to the Openshift webconsole->Applications->Pods and pick the my-cluster-mtarget-kafka-0
+   Go to the terminal and run
+   ./bin/kafka-topics.sh --list --zookeeper localhost:2181
+   This will confirm that my-topic was created automatically
+   Send some messages to my-topic on my-kafka-cluster
+  ./bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic
+
+   See these messages being replicated to my-topic on my-cluster-mtarget-kafka
+   ./bin/kafka-console-producer.sh --broker-list my-cluster-mtarget-kafka-bootstrap:9092 --topic my-topic
+
 
 
 Challenge exercise
 Now try to whitelist another topic in the mirrormaker configuration
+Refer AMQ Streams official documentation : https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/using_amq_streams_on_openshift_container_platform/assembly-deployment-configuration-str#assembly-kafka-mirror-maker-whitelist-deployment-configuration-kafka-mirror-maker
+
+Kavitha To do:
+Prometheus for Mirror maker?
