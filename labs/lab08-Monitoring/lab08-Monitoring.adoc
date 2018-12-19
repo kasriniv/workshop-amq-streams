@@ -1,0 +1,11 @@
+This lab will be based on the work here
+https://github.com/strimzi/strimzi-lab/blob/master/rh-summit-2018/module-01.adoc#monitoring-with-prometheus-and-grafana
+
+
+Steps to configure Promethus and Grafana
+- for Kafka cluster
+- for Mirror Maker
+- for  any else?
+
+
+Walk through on what you can see via Grafana 

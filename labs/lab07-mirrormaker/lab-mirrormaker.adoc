@@ -33,8 +33,18 @@ Testing +
    Send some messages to my-topic on my-kafka-cluster +
   ./bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic my-topic +
    See these messages being replicated to my-topic on my-cluster-mtarget-kafka +
-   ./bin/kafka-console-producer.sh --broker-list my-cluster-mtarget-kafka-bootstrap:9092 --topic my-topic
+   ./bin/kafka-console-consumer.sh --bootstrap-server my-cluster-mtarget-kafka-bootstrap:9092   --topic my-topic --from-beginning
+   
+   
 
+Testing easier (KAVITHA STOP POINT) +
+
+   Deploy the app : generic producer to the Openshift cluster
+   git clone 
+   cd 
+   mvn -DskipTests fabric8:deploy
+   run curl -X POST http://generic-myproject.apps.kasriniv-b22e.openshiftworkshop.com/camel/posttotopic -d 'hello'
+   
 
 
 Challenge exercise +
@@ -42,4 +52,4 @@ Now try to whitelist another topic in the mirrormaker configuration +
 Refer AMQ Streams official documentation : https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html/using_amq_streams_on_openshift_container_platform/assembly-deployment-configuration-str#assembly-kafka-mirror-maker-whitelist-deployment-configuration-kafka-mirror-maker
 
 Kavitha To do: +
-Prometheus for Mirror maker?
+Change consuming app to use devnation app, perhaps put a JS UI
