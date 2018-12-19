@@ -1,9 +1,25 @@
-#This lab walks through 
+This lab walks through 
 a) setting up mirrormaker 
 b) testing the setup to ensure that messages sent to one cluster are being replicated/mirrored in the mirrormaker target cluster.
 
+We will use the first cluster previously created in this workshop as the "source" cluster.
+We will create the mirror-maker "target" cluster.
+ 
+Prerequisites:
+1. Please make sure you have my-cluster installed per previous labs
+2. Make sure you are logged in to Openshift with the oc client
 
-#First we will create a "target" cluster. This will be the cluster that mirror maker writes to.
-#Note: We will use the first cluster previously created in this workshop as the "source" cluster. 
+Step 1: Run this to create the "target" cluster. This will be the cluster that mirror maker writes to.
 
-oc apply -f <raw github link for 
+oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab07-mirrormaker/kafka-ephemeral-mtarget.yaml
+
+Step 2: create the mirror maker configuration
+
+Note that we will create the basic objects by running this yaml and then edit the environment properties in the Openshift webconsole.
+
+
+
+
+Open questions
+1. Can I put multiple topics to sync? how? comma seperated? K to test
+2. Do I have to precreate topics on target
