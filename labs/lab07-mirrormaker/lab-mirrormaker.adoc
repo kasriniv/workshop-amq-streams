@@ -1,2 +1,9 @@
-#This lab walks through a) setting up mirrormaker b) testing the setup to ensure that messages sent to one cluster are being replicated/mirrored in the mirrormaker target cluster.
+#This lab walks through 
+a) setting up mirrormaker 
+b) testing the setup to ensure that messages sent to one cluster are being replicated/mirrored in the mirrormaker target cluster.
 
+
+#First we will create a "target" cluster. This will be the cluster that mirror maker writes to.
+#Note: We will use the first cluster previously created in this workshop as the "source" cluster. 
+
+oc apply -f <raw github link for 
