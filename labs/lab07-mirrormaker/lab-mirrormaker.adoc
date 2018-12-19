@@ -4,13 +4,13 @@ We will use the first cluster previously created in this workshop as the "source
 We will create the mirror-maker "target" cluster.
  
  
-Prerequisites:
-1. You have 'my-cluster-kafka' installed per previous labs
-2. You have 'my-topic' created per previous labs
-3. Make sure you are logged in to Openshift with the oc client
+Prerequisites: +
+1. You have 'my-cluster-kafka' installed per previous labs +
+2. You have 'my-topic' created per previous labs +
+3. Make sure you are logged in to Openshift with the oc client +
 
 
-Steps
+Steps +
 
 
     Step 1: Run this to create the "target" cluster. This will be the cluster that mirror maker writes to.
@@ -26,7 +26,7 @@ Steps
     Make sure the pods have come up fine.
 
 
-Testing 
+Testing +
    Go to the Openshift webconsole->Applications->Pods and pick the my-cluster-mtarget-kafka-0
    Go to the terminal and run
    ./bin/kafka-topics.sh --list --zookeeper localhost:2181
