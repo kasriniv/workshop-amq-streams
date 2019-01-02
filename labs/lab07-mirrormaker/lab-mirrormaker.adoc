@@ -27,6 +27,10 @@ Steps +
 
 
 Testing +
+
+ NOTE : The producer and consumer are from the mirror maker's perspective. Messages will be read from the producer (in mirrormaker config) and published to consumer.
+ 
+ 
    Go to the Openshift webconsole->Applications->Pods and pick the my-cluster-mtarget-kafka-0 ->Terminal and run +
    ./bin/kafka-topics.sh --list --zookeeper localhost:2181 +
    This will confirm that my-topic was created automatically. +
