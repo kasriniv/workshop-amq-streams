@@ -47,20 +47,20 @@ Testing via command line +
 
 Testing via supplied generic producer and consumer SpringBoot  +
 
-   Deploy the app : generic producer to the Openshift cluster +
+   Deploy the app : generic producer to the Openshift cluster 
    git clone 
    cd <......>/testapp/generic-producer
    mvn -DskipTests fabric8:deploy
    
-   To send messages to my-topic +
+   To send messages to my-topic (Edit below curl for your Openshift route)
    curl -X POST http://generic-myproject.apps.kasriniv-b22e.openshiftworkshop.com/camel/posttotopic -d 'hello' -H 'Content-Type: text'
    
 
-  Deploy the app: generic consumer to the Openshift cluster +
+  Deploy the app: generic consumer to the Openshift cluster 
   
   cd <......>/testapp/generic-consumer 
   mvn -DskipTests fabric8:deploy
   
-  Edit the consumer.html line 29 to point to the Openshift route for the consumer service. + 
+  Edit the consumer.html line 29 to point to the Openshift route for the consumer service.  
   Now use your local browser to render consumer.html and hit 'Submit Request'
   You should see an HMTL page with a table of all messages. 
