@@ -39,10 +39,11 @@ public class GenericConsumerApplication {
 						.process(exchange -> {
                             Message in = exchange.getIn();
                             //wordCount.put(in.getHeader(KafkaConstants.KEY, String.class), in.getBody(Long.class));
-                           // updates.add(new WordCount(in.getHeader(KafkaConstants.KEY, String.class), in.getBody(String.class)));
+                          
+							// updates.add(new WordCount(in.getBody(String.class),in.getHeader(KafkaConstants.KEY, String.class)));
 							 updates.add(
 								 new WordCount(
-									 in.getBody(String.class),in.getHeader(KafkaConstants.KEY, String.class)));
+									 in.getBody(String.class),"one more"));
 							
                         });
 

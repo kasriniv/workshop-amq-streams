@@ -6,7 +6,7 @@ items:
   kind: Service
   metadata:
     annotations:
-      fabric8.io/git-commit: f2b230c5ea72b81bd5d99076ead65195148da973
+      fabric8.io/git-commit: 63529d484a3b54f580a8529da76cb85dff6b9cd8
       prometheus.io/port: "9779"
       fabric8.io/scm-url: https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/genericconsumer
       fabric8.io/iconUrl: img/icons/camel.svg
@@ -34,7 +34,7 @@ items:
   kind: Deployment
   metadata:
     annotations:
-      fabric8.io/git-commit: f2b230c5ea72b81bd5d99076ead65195148da973
+      fabric8.io/git-commit: 63529d484a3b54f580a8529da76cb85dff6b9cd8
       fabric8.io/iconUrl: img/icons/camel.svg
       fabric8.io/git-branch: master
       fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=genericconsumer&var-version=0.0.1-SNAPSHOT
@@ -57,7 +57,7 @@ items:
     template:
       metadata:
         annotations:
-          fabric8.io/git-commit: f2b230c5ea72b81bd5d99076ead65195148da973
+          fabric8.io/git-commit: 63529d484a3b54f580a8529da76cb85dff6b9cd8
           fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=genericconsumer&var-version=0.0.1-SNAPSHOT
           fabric8.io/scm-url: https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/genericconsumer
           fabric8.io/iconUrl: img/icons/camel.svg

@@ -10,6 +10,6 @@ items:
     tags:
     - from:
         kind: ImageStreamImage
-        name: genericconsumer@sha256:5f360414d42884810e8850610b7c28b633078307927a9eacc1f0df13ce125a13
+        name: genericconsumer@sha256:267a98950368aa78121c6ff56852d889d23c8f02206b608516ef5aa8a73359d8
         namespace: myproject
       name: latest

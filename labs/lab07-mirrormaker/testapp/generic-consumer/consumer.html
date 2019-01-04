@@ -6,17 +6,17 @@
 
  
 
-<h2>The XMLHttpRequest Object</h2>
+<h2>The Record getter from Kafka Topic</h2>
 
  
 
-<div>
+<!--div>
 
   <textarea id="jsonResponse" style="width:500px; height:200px">PLACE HOLDER</textarea>
 
-</div>
-
-<button type="button" onclick="loadDoc()">Change Content</button>
+</div-->
+<p id="demo"></p>
+<button type="button" onclick="loadDoc()">Submit Request</button>
 
  
 
@@ -26,24 +26,33 @@ function loadDoc() {
 
   var xhttp = new XMLHttpRequest();
 
-  var baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=00fd6350d7b03123c324839586cb50ad&q=Raleigh"
-
- 
-
-  xhttp.onreadystatechange = function() {
-
-    if (this.readyState == 4 && this.status == 200) {
-
-      document.getElementById("jsonResponse").innerHTML = this.responseText;
-
-    }
-
-  };
+  var baseURL = "https://cors.io/?http://genericconsumer-myproject.apps.kasriniv-8dab.openshiftworkshop.com/camel/messages"
 
   xhttp.open("GET", baseURL, true);
 
   xhttp.send();
 
+  xhttp.onreadystatechange = function() {
+
+   if (this.readyState == 4 && this.status == 200) {
+	   var obj=this.responseText;
+	   //var myJSON = JSON.stringify(obj);
+	    var myJSON = JSON.parse(obj);
+	   console.log(myJSON);
+	   var txt="";
+    txt += "<table border='1'>"
+       for (x in myJSON) {
+         txt += "<tr><td>" + x + "</td><td>" + myJSON[x].word + "</td></tr>";
+       }
+       txt += "</table>" 
+       document.getElementById("demo").innerHTML = txt;
+
+    }
+	
+console.log(this.responseText);
+  };
+
+  
 }
 
 </script>

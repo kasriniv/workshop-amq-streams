@@ -27,6 +27,7 @@ public class GenericProducerApplication {
 						.log("${in.headers}")
 						.inOnly("kafka:my-topic?brokers={{camel.kafka.bootstrap.servers}}")
 						.endRest();
+				System.out.println("done posting to topic");
 
 			}
 		};
