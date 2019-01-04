@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+ 
+
+<h2>The XMLHttpRequest Object</h2>
+
+ 
+
+<div>
+
+  <textarea id="jsonResponse" style="width:500px; height:200px">PLACE HOLDER</textarea>
+
+</div>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+ 
+
+<script>
+
+function loadDoc() {
+
+  var xhttp = new XMLHttpRequest();
+
+  var baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=00fd6350d7b03123c324839586cb50ad&q=Raleigh"
+
+ 
+
+  xhttp.onreadystatechange = function() {
+
+    if (this.readyState == 4 && this.status == 200) {
+
+      document.getElementById("jsonResponse").innerHTML = this.responseText;
+
+    }
+
+  };
+
+  xhttp.open("GET", baseURL, true);
+
+  xhttp.send();
+
+}
+
+</script>
+
+ 
+
+</body>
+
+</html>

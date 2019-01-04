@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    fabric8.io/git-commit: f2b230c5ea72b81bd5d99076ead65195148da973
+    prometheus.io/port: "9779"
+    fabric8.io/scm-url: https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/demo-word-count-rest
+    fabric8.io/iconUrl: img/icons/camel.svg
+    fabric8.io/git-branch: master
+    prometheus.io/scrape: "true"
+    fabric8.io/scm-tag: HEAD
+  labels:
+    expose: "true"
+    app: demo-word-count-rest
+    provider: fabric8
+    version: 0.0.1-SNAPSHOT
+    group: com.redhat.devnation.kafka.streams
+  name: demo-word-count-rest
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: demo-word-count-rest
+    provider: fabric8
+    group: com.redhat.devnation.kafka.streams

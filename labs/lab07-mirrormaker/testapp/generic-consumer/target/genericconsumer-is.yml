@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    name: genericconsumer
+  spec:
+    tags:
+    - from:
+        kind: ImageStreamImage
+        name: genericconsumer@sha256:5f360414d42884810e8850610b7c28b633078307927a9eacc1f0df13ce125a13
+        namespace: myproject
+      name: latest

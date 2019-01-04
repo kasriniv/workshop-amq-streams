@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    name: demo-word-count-rest
+  spec:
+    tags:
+    - from:
+        kind: ImageStreamImage
+        name: demo-word-count-rest@sha256:72c68c1bbd8ff59456ec933a2975b2deb32bdb1ff5efa642146c9db11c8e3488
+        namespace: myproject
+      name: latest

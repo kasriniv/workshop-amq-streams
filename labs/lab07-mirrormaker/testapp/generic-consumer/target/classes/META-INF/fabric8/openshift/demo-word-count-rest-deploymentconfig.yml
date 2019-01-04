@@ -1,0 +1,76 @@
+---
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    fabric8.io/git-commit: f2b230c5ea72b81bd5d99076ead65195148da973
+    fabric8.io/iconUrl: img/icons/camel.svg
+    fabric8.io/git-branch: master
+    fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=demo-word-count-rest&var-version=0.0.1-SNAPSHOT
+    fabric8.io/scm-tag: HEAD
+    fabric8.io/scm-url: https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/demo-word-count-rest
+  labels:
+    app: demo-word-count-rest
+    provider: fabric8
+    version: 0.0.1-SNAPSHOT
+    group: com.redhat.devnation.kafka.streams
+  name: demo-word-count-rest
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    app: demo-word-count-rest
+    provider: fabric8
+    group: com.redhat.devnation.kafka.streams
+  strategy:
+    rollingParams:
+      timeoutSeconds: 3600
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        fabric8.io/git-commit: f2b230c5ea72b81bd5d99076ead65195148da973
+        fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=demo-word-count-rest&var-version=0.0.1-SNAPSHOT
+        fabric8.io/scm-url: https://github.com/spring-projects/spring-boot/spring-boot-starter-parent/demo-word-count-rest
+        fabric8.io/iconUrl: img/icons/camel.svg
+        fabric8.io/git-branch: master
+        fabric8.io/scm-tag: HEAD
+      labels:
+        app: demo-word-count-rest
+        provider: fabric8
+        version: 0.0.1-SNAPSHOT
+        group: com.redhat.devnation.kafka.streams
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CAMEL_KAFKA_BOOTSTRAP_SERVERS
+          value: my-cluster-kafka-bootstrap:9092
+        image: demo-word-count-rest:latest
+        imagePullPolicy: IfNotPresent
+        name: spring-boot
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9779
+          name: prometheus
+          protocol: TCP
+        - containerPort: 8778
+          name: jolokia
+          protocol: TCP
+        securityContext:
+          privileged: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - spring-boot
+      from:
+        kind: ImageStreamTag
+        name: demo-word-count-rest:latest
+    type: ImageChange
