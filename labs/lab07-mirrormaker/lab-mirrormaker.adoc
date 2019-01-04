@@ -26,7 +26,7 @@ Steps +
     Make sure the pods have come up fine.
 
 
-Testing +
+Testing via command line +
 
  NOTE : The producer and consumer are from the mirror maker's perspective. Messages will be read from the producer (in mirrormaker config) and published to consumer. +
  
@@ -45,14 +45,23 @@ Testing +
    
    
 
-Testing easier (KAVITHA STOP POINT) +
+Testing via supplied generic producer and consumer SpringBoot  +
 
    Deploy the app : generic producer to the Openshift cluster
    git clone 
-   cd 
+   cd <......>/testapp/generic-producer
+   
    mvn -DskipTests fabric8:deploy
-   run curl -X POST http://generic-myproject.apps.kasriniv-b22e.openshiftworkshop.com/camel/posttotopic -d 'hello'
+   To send messages to my-topic
+   curl -X POST http://generic-myproject.apps.kasriniv-b22e.openshiftworkshop.com/camel/posttotopic -d 'hello' -H 'Content-Type: text'
    
 
-Kavitha To do: +
-Change consuming app to use devnation app, perhaps put a JS UI
+  Deploy the app: generic consumer to the Openshift cluster
+  cd <......>/testapp/generic-consumer 
+  
+  
+  mvn -DskipTests fabric8:deploy
+  
+  Edit the consumer.html line 29 to point to the Openshift route for the consumer service.
+  Now use your local browser to render consumer.html and hit 'Submit Request'
+  You should see an HMTL page with a table of all messages. 
