@@ -1,5 +1,5 @@
 This lab will be focus on the following: +
-- Steps to create a cluster with metrics instrumented
+- Steps to create a cluster with metrics instrumented+
 - Steps to create an instance of Prometheus and Grafana
 - Steps to import prebuilt kafka and zookeeper definitions
 
