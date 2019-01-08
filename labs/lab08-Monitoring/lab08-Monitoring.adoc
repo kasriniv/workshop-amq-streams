@@ -54,16 +54,12 @@ Step 8: Importing Dashboard definitions
   Go to the + on the top left and choose "import".
   Copy the JSON from this location
   https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.9.0/metrics/examples/grafana/strimzi-kafka.json
-
   Pick prometheus as the datasource and finish
-
   You should see the dashboard with data like in the screenshots.
 
   Similarly to create kafka-zookeeper dashboards, import the corresponding definition
   Go to the + on the top left and choose "import".
   Copy the JSON from this location
   https://raw.githubusercontent.com/strimzi/strimzi-kafka-operator/0.9.0/metrics/examples/grafana/strimzi-zookeeper.json
-
   Pick prometheus as the datasource and finish.
- 
   You should see the dashboard with data like in the screenshots.
