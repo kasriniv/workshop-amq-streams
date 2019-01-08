@@ -11,7 +11,7 @@ And so, for this exercise, we will install our own instance of Prometheus and Gr
 Step 1: We create a new cluster with the  metrics instrumentation for to the new cluster : my-cluster3
 We could have edited any existing cluster but chose to create a new one. 
 
-oc apply -f <kavitha edit rawgithublink here>
+oc apply -f https://raw.githubusercontent.com/kasriniv/workshop-amq-streams/master/labs/lab08-Monitoring/kafka-cluster3-metrics.yaml
 
 
 Step 2: Install Prometheus
